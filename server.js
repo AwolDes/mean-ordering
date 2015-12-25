@@ -72,6 +72,8 @@ var methodOverride = require('method-override'); // simulate DELETE and PUT (exp
         });
     });
 
+
+
 mongoose.connect('localhost');
 mongoose.connection.on('error', function() {
   console.log('← MongoDB Connection Error →');
@@ -84,6 +86,14 @@ app.use(morgan('dev'));                                         // log every req
 app.use(bodyParser.json());                                     // parse application/json
 app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
 app.use(methodOverride());
+
+
+// application -------------------------------------------------------------
+    app.get('*', function(req, res) {
+        res.sendfile('./public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
+    });
+
+
 
     // listen (start app with node server.js) ======================================
 app.listen(8080);
