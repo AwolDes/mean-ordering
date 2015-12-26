@@ -1,7 +1,7 @@
 angular.module('app.controllers', [])
 
 .controller('mainCtrl', function($scope, $http) {
-    $scope.formData = {};
+    $scope.formData = {text:""};
 
     // when landing on the page, get all todos and show them
     $http.get('/api/todos')
